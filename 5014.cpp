@@ -41,7 +41,7 @@ void BFS()
 			else if (i == 1)
 			{
 				nx = temp.floor - D;
-				if (nx >= 0 && visit[nx] == 0)
+				if (nx >= 1 && visit[nx] == 0)
 				{
 					visit[nx] = 1;
 					list A;
@@ -60,7 +60,7 @@ int main()
 	temp.floor = S;
 	que.push(temp);
 	visit[S] = 1;
-	// F ÃÑ Ãş¼ö, S Áö±İ ÀÖ´Â Ãş¼ö, G °¡¾ßÇÏ´Â Ãæ¼ö, U ¾÷, D ´Ù¿î
+	// F ì´ ì¸µìˆ˜, S ì§€ê¸ˆ ìˆëŠ” ì¸µìˆ˜, G ê°€ì•¼í•˜ëŠ” ì¶©ìˆ˜, U ì—…, D ë‹¤ìš´
 	BFS();
 	if (flag == 0)
 		printf("use the stairs");
