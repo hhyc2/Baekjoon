@@ -12,8 +12,8 @@ int main()
 	for (int i = 0; i < N; i++)
 		scanf("%lld", &arr[i]);
 	sort(arr, arr + N);
-	long long int min = 1;
-	long long int max = 1000000000000000000LL;
+	long long int min = 0;
+	long long int max = M * arr[N-1] ;
 	while (min <= max)
 	{
 		long long int mid = (min + max) / 2;
