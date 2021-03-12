@@ -3,6 +3,7 @@
 #include<algorithm>
 using namespace std;
 int dist[1001];
+bool visit[1001];
 int N;
 int M;
 priority_queue< pair <int, int>, vector< pair < int, int > >, greater < pair < int, int > > > que;
@@ -19,14 +20,16 @@ void find(int start)
 		int cost = que.top().first;
 		int index = que.top().second;
 		que.pop();
+		if (visit[index])
+			continue;
+		visit[index] = true;
+		dist[index] = cost;
 		for (int i = 0; i < vec[index].size(); i++)
 		{
-			int MIN = min(cost + vec[index][i].value , dist[vec[index][i].end]);
-			if (MIN == cost + vec[index][i].value)
-			{
-				dist[vec[index][i].end] = cost + vec[index][i].value;
-				que.push({ dist[vec[index][i].end],vec[index][i].end });
-			}
+			if (visit[vec[index][i].end])
+				continue;
+			vec[index][i].value += cost;
+			que.push({ vec[index][i].value , vec[index][i].end});
 		}
 	}
 }
