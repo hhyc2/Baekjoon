@@ -5,10 +5,9 @@ using namespace std;
 int M;
 int N;
 int arr[1001][1001];
-int visit[1001][1001];
 int dx[4] = { 1,-1,0,0 };
 int dy[4] = { 0,0,1,-1 };
-int value=0;
+int value = 0;
 struct list
 {
 	int x;
@@ -32,9 +31,8 @@ void BFS()
 				int temp_y = y + dy[i];
 				if (temp_x >= 0 && temp_x < N && temp_y >= 0 && temp_y < M)
 				{
-					if (visit[temp_x][temp_y] == 0 && arr[temp_x][temp_y] == 0)
+					if (arr[temp_x][temp_y] == 0)
 					{
-						visit[temp_x][temp_y] = 1;
 						list temp;
 						temp.x = temp_x;
 						temp.y = temp_y;
@@ -43,7 +41,6 @@ void BFS()
 					}
 				}
 			}
-
 		}
 		value++;
 	}
@@ -74,18 +71,17 @@ int main()
 				temp.x = i;
 				temp.y = j;
 				que.push(temp);
-				visit[i][j] = 1;
 			}
 		}
 	}
 	if (que.empty())
 	{
-		printf("0");
+		printf("-1");
 		return 0;
 	}
 	BFS();
 	if (find())
-		printf("%d", value-1);
+		printf("%d", value - 1);
 	else
 		printf("-1");
 }
